@@ -19,7 +19,6 @@ public class TabTracker implements NativeKeyListener {
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         if(e.getKeyCode() == NativeKeyEvent.VC_TAB && !showingStats){
-            System.out.println("Pulsado tabulador!");
             this.showingStats = true;
         }
     }
@@ -27,7 +26,6 @@ public class TabTracker implements NativeKeyListener {
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
         if(e.getKeyCode() == NativeKeyEvent.VC_TAB &&showingStats){
-            System.out.println("Despulsado tabulador!");
             this.showingStats = false;
         }
     }
