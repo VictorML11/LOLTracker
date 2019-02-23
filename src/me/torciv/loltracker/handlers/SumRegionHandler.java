@@ -1,9 +1,9 @@
-package me.torciv.loltracker;
+package me.torciv.loltracker.handlers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public enum Side {
+public enum SumRegionHandler {
 
     BLUE(427),
     RED(1001);
@@ -11,7 +11,7 @@ public enum Side {
     private int xStart;
     private ArrayList<Integer> points;
 
-    Side(int xStart) {
+    SumRegionHandler(int xStart) {
         this.xStart = xStart;
         points = new ArrayList<>(Arrays.asList(320,348,396,324,472,500,548,576,624,652));
     }

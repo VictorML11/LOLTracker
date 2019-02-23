@@ -1,4 +1,4 @@
-package me.torciv.loltracker;
+package me.torciv.loltracker.trackers;
 
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
