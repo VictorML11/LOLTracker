@@ -21,7 +21,7 @@ public class MouseTracker implements NativeMouseInputListener {
             int summ = this.side.isSummoner(x, y);
             if(summ != -1){
                 System.out.println("x: " + e.getX() + " y: " + e.getY());
-                System.out.println("Summoner number: " + summ);
+                System.out.println("Summ number: " + summ);
             }
 
         }

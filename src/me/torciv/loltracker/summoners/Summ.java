@@ -1,10 +1,10 @@
 package me.torciv.loltracker.summoners;
 
-public abstract class Summoner {
+public abstract class Summ {
 
     private long cooldown;
 
-    public Summoner(long cooldown) {
+    public Summ(long cooldown) {
         this.cooldown = cooldown;
     }
 

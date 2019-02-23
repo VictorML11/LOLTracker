@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.1stleg:jnativehook:2.1.0" level="project" />
+    <orderEntry type="library" name="com.merakianalytics.orianna:orianna-examples:4.0.0-rc2" level="project" />
   </component>
 </module>

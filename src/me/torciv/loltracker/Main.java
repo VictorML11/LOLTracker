@@ -1,5 +1,11 @@
 package me.torciv.loltracker;
 
+
+import com.merakianalytics.orianna.Orianna;
+import com.merakianalytics.orianna.types.common.Region;
+import com.merakianalytics.orianna.types.core.spectator.CurrentMatch;
+import com.merakianalytics.orianna.types.core.spectator.Player;
+import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
@@ -8,6 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main  {
+
+    public static final String APIKEY = "RGAPI-6e6d5a4b-d015-40dd-894d-77aeb5b8ea84";
+    public static final String SUMMONER_NAME = "sergislabgg";
 
     public static void main(String[] args) {
             Side side = null;
@@ -55,6 +64,29 @@ public class Main  {
             TabTracker tt = new TabTracker();
             GlobalScreen.addNativeKeyListener(tt);
             GlobalScreen.addNativeMouseListener(new MouseTracker(tt, side));
+
+
+            Orianna.setRiotAPIKey(APIKEY);
+            Orianna.setDefaultRegion(Region.EUROPE_WEST);
+
+            Summoner summoner = Summoner.named(SUMMONER_NAME).withRegion(Region.EUROPE_WEST).get();
+            CurrentMatch currentGame = summoner.getCurrentMatch();
+
+
+
+            if(currentGame != null){
+                System.out.println(currentGame.getMap());
+                for(Player player : currentGame.getParticipants()) {
+                    System.out.println(player.getSummoner().getName());
+                }
+            }
+
+
+
+            /*Orianna.Configuration config = new Orianna.Configuration();
+            config.setDefaultPlatform(Platform.EUROPE_WEST);
+            Orianna.setDefaultLocale("es_ES");
+            config.setCurrentVersionExpiration(ExpirationPeriod.create(6, TimeUnit.HOURS));*/
 
     }
 
