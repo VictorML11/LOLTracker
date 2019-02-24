@@ -3,30 +3,30 @@ package me.torciv.loltracker;
 
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
-import com.merakianalytics.orianna.types.common.RunePath;
 import com.merakianalytics.orianna.types.common.Side;
 import com.merakianalytics.orianna.types.core.spectator.CurrentMatch;
 import com.merakianalytics.orianna.types.core.spectator.Player;
-import com.merakianalytics.orianna.types.core.spectator.Runes;
-import com.merakianalytics.orianna.types.core.staticdata.ReforgedRune;
 import com.merakianalytics.orianna.types.core.staticdata.ReforgedRunes;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import me.torciv.loltracker.handlers.SumRegionHandler;
 import me.torciv.loltracker.trackers.MouseTracker;
 import me.torciv.loltracker.trackers.TabTracker;
+import me.torciv.loltracker.view.ViewMain;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
 
-    public static final String APIKEY = "RGAPI-6e6d5a4b-d015-40dd-894d-77aeb5b8ea84";
-    public static final String SUMMONER_NAME = "sergislabgg";
+    public static final String APIKEY = "RGAPI-0cf54655-5059-45d5-bba1-a45c714280e5";
+    public static final String SUMMONER_NAME = "Tanu";
     public static final String SUMMONER_NAME2 = "Best OTP Syndra";
-    public static final String SUMMONER_NAME3 = "Bean";
+    public static final String SUMMONER_NAME3 = "WhirLind7";
+    public static CurrentMatch currentGame;
 
 
     public static ArrayList<Champ> enemyTeam = new ArrayList<>();
@@ -39,7 +39,7 @@ public class Main {
 
 
         Summoner summoner = Summoner.named(SUMMONER_NAME3).withRegion(Region.EUROPE_WEST).get();
-        CurrentMatch currentGame = summoner.getCurrentMatch();
+        currentGame = summoner.getCurrentMatch();
 
         Side mySide = null;
 
@@ -62,9 +62,16 @@ public class Main {
                     }
                     enemyTeam.add(new Champ(p.getChampion(), p.getSummonerSpellD(), p.getSummonerSpellF(), insight));
 
-
                 }
             }
+            System.out.println(currentGame.getCreationTime().toLocalTime());
+            System.out.println(currentGame.getCreationTime().getMillis());
+            System.out.println(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - currentGame.getCreationTime().getMillis()));
+
+            ViewMain viewMain = new ViewMain();
+            viewMain.initFrame();
+
+            //viewMain.es(enemyTeam.get(0).getChampion().getImage().get());
 
 
             try {
@@ -86,7 +93,10 @@ public class Main {
             GlobalScreen.addNativeKeyListener(tt);
             GlobalScreen.addNativeMouseListener(new MouseTracker(tt, rh));
 
+
+
         }
+
 
 
     }

@@ -7,6 +7,8 @@ import me.torciv.loltracker.handlers.TimerHandler;
 import org.jnativehook.mouse.NativeMouseEvent;
 import org.jnativehook.mouse.NativeMouseInputListener;
 
+import java.util.concurrent.TimeUnit;
+
 public class MouseTracker implements NativeMouseInputListener {
 
     private TabTracker tabTracker;
@@ -31,6 +33,18 @@ public class MouseTracker implements NativeMouseInputListener {
 
                 Champ champ = Main.enemyTeam.get(target-1);
                 double t;
+
+
+                long millis = System.currentTimeMillis() - Main.currentGame.getCreationTime().getMillis();
+
+                String unlock = String.format("%02d min, %02d sec",
+                        TimeUnit.MILLISECONDS.toMinutes(millis),
+                        TimeUnit.MILLISECONDS.toSeconds(millis) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
+                );
+
+                System.out.println(unlock);
+
                 if (summ % 2 == 0) {
                     if (!champ.isS2t()) {
                         t = champ.getSummoners().getValue().getCooldowns().get(0);
@@ -39,6 +53,7 @@ public class MouseTracker implements NativeMouseInputListener {
                         }
                         TimerHandler timerHandler = new TimerHandler((float) t, champ, 2);
                         champ.setS2t(true);
+
                     }
 
                 } else {
