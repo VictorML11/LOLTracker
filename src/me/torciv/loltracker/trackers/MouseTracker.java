@@ -53,6 +53,7 @@ public class MouseTracker implements NativeMouseInputListener {
                     summoner.setValue((float) time);
                     System.out.println("[" + champ.getChampion().getName() + "] "
                             + summoner.getKey().getName() + " : is now in Cooldown!");
+                    Main.leagueNotification.notifySummonerUsed(champ.getChampion().getName(), summoner.getKey().getName());
                 }
 
             }
@@ -73,6 +74,7 @@ public class MouseTracker implements NativeMouseInputListener {
 
     @Override
     public void nativeMouseMoved(NativeMouseEvent e) {
+
 
     }
 

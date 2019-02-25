@@ -18,6 +18,7 @@ public class TabTracker implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
+
         if(e.getKeyCode() == NativeKeyEvent.VC_TAB && !showingStats){
             this.showingStats = true;
         }

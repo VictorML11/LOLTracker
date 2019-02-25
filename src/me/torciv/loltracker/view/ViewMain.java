@@ -3,17 +3,14 @@ package me.torciv.loltracker.view;
 import com.merakianalytics.orianna.types.core.staticdata.SummonerSpell;
 import me.torciv.loltracker.Champ;
 import me.torciv.loltracker.Main;
+import me.torciv.loltracker.handlers.LeagueNotification;
 import org.apache.commons.lang3.tuple.MutablePair;
-import org.msgpack.jackson.dataformat.Tuple;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 
 public class ViewMain extends JFrame implements ActionListener{
 
@@ -56,7 +53,7 @@ public class ViewMain extends JFrame implements ActionListener{
 
     public ViewMain() {
         for(int i = 0; i <  Main.enemyTeam.size(); i++){
-            ImageIcon icon = new ImageIcon( Main.enemyTeam.get(i).getChampion().getImage().get());
+            ImageIcon icon = new ImageIcon( Main.enemyTeam.get(i).getChampion().getImage().get().getScaledInstance(100,100,4));
             String name =  Main.enemyTeam.get(i).getChampion().getName();
             champs.get(i).setIcon(icon);
             champs.get(i).setText(name);
@@ -65,7 +62,9 @@ public class ViewMain extends JFrame implements ActionListener{
         for(int i = 0; i < summChamps.size(); i++){
             for(int j = 0; j <  Main.enemyTeam.get(i).getSummoners().size(); j++){
                 ImageIcon sicon = new ImageIcon( Main.enemyTeam.get(i).getSummoners().get(j).getKey().getImage().get());
-                summChamps.get(i).get(j).setIcon(sicon);
+                ImageIcon i2 = new ImageIcon(Main.enemyTeam.get(i).getSummoners().get(j).getKey()
+                        .getImage().get().getScaledInstance(35,35,4));
+                summChamps.get(i).get(j).setIcon(i2);
                 summChamps.get(i).get(j).setText("UP!");
             }
 
@@ -104,6 +103,7 @@ public class ViewMain extends JFrame implements ActionListener{
                 float currentTime = champPair.getValue();
                 float nextTime = currentTime - 1F;
                 if(nextTime > 0.0F){
+
                     System.out.println("[" + c.getChampion().getName() + "] "
                             + champPair.getKey().getName() + " has " + nextTime +" sec");
                     champPair.setValue(nextTime);
@@ -114,10 +114,12 @@ public class ViewMain extends JFrame implements ActionListener{
                     System.out.println("[" + c.getChampion().getName() + "] "
                             + champPair.getKey().getName() + " : is now UP!");
                     summChamps.get(i).get(j).setText("UP!");
+                    Main.leagueNotification.notifySummonerUp(c.getChampion().getName(), champPair.getKey().getName());
 
                 }
             }
         }
     }
+
 
 }

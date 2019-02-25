@@ -9,6 +9,7 @@ import com.merakianalytics.orianna.types.core.spectator.Player;
 import com.merakianalytics.orianna.types.core.staticdata.ReforgedRunes;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import lombok.Getter;
+import me.torciv.loltracker.handlers.LeagueNotification;
 import me.torciv.loltracker.handlers.SumRegionHandler;
 import me.torciv.loltracker.trackers.MouseTracker;
 import me.torciv.loltracker.trackers.TabTracker;
@@ -23,20 +24,22 @@ import java.util.logging.Logger;
 
 public class Main {
 
-    public static final String APIKEY = "RGAPI-0cf54655-5059-45d5-bba1-a45c714280e5";
+    public static final String APIKEY = "RGAPI-bb6fb957-739f-4d38-863d-24806d2621b2";
     public static final String SUMMONER_NAME = "Tanu";
-    public static final String SUMMONER_NAME2 = "Best OTP Syndra";
-    public static final String SUMMONER_NAME3 = "WhirLind7";
+    public static final String SUMMONER_NAME3 = "Deloron";
+    public static final String SUMMONER_NAME2 = "WhirLind7";
     public static CurrentMatch currentGame;
 
 
     public static ArrayList<Champ> enemyTeam = new ArrayList<>();
+    public static LeagueNotification leagueNotification;
 
     @Getter
     private static Main instance;
 
     public Main() {
         instance = this;
+        leagueNotification = new LeagueNotification();
     }
 
     //Cosmic Insight 8347
@@ -73,6 +76,7 @@ public class Main {
 
                 }
             }
+
             System.out.println(currentGame.getCreationTime().toLocalTime());
             System.out.println(currentGame.getCreationTime().getMillis());
             System.out.println(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - currentGame.getCreationTime().getMillis()));
