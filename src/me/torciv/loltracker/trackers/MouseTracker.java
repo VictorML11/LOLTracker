@@ -1,9 +1,10 @@
 package me.torciv.loltracker.trackers;
 
+import com.merakianalytics.orianna.types.core.staticdata.SummonerSpell;
 import me.torciv.loltracker.Champ;
 import me.torciv.loltracker.Main;
 import me.torciv.loltracker.handlers.SumRegionHandler;
-import me.torciv.loltracker.handlers.TimerHandler;
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.jnativehook.mouse.NativeMouseEvent;
 import org.jnativehook.mouse.NativeMouseInputListener;
 
@@ -45,26 +46,13 @@ public class MouseTracker implements NativeMouseInputListener {
 
                 System.out.println(unlock);
 
-                if (summ % 2 == 0) {
-                    if (!champ.isS2t()) {
-                        t = champ.getSummoners().getValue().getCooldowns().get(0);
-                        if (champ.isInsight()) {
-                            t *= 0.95f;
-                        }
-                        TimerHandler timerHandler = new TimerHandler((float) t, champ, 2);
-                        champ.setS2t(true);
+                MutablePair<SummonerSpell,Float> summoner = champ.getSummoners().get(summ-1);
 
-                    }
-
-                } else {
-                    if (!champ.isS1t()) {
-                        t = champ.getSummoners().getKey().getCooldowns().get(0);
-                        if (champ.isInsight()) {
-                            t *= 0.95f;
-                        }
-                        TimerHandler timerHandler = new TimerHandler((float) t, champ, 1);
-                        champ.setS1t(true);
-                    }
+                if(summoner.getValue() == -1F){
+                    double time = summoner.getKey().getCooldowns().get(0);
+                    summoner.setValue((float) time);
+                    System.out.println("[" + champ.getChampion().getName() + "] "
+                            + summoner.getKey().getName() + " : is now in Cooldown!");
                 }
 
             }

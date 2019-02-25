@@ -8,6 +8,7 @@ import com.merakianalytics.orianna.types.core.spectator.CurrentMatch;
 import com.merakianalytics.orianna.types.core.spectator.Player;
 import com.merakianalytics.orianna.types.core.staticdata.ReforgedRunes;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
+import lombok.Getter;
 import me.torciv.loltracker.handlers.SumRegionHandler;
 import me.torciv.loltracker.trackers.MouseTracker;
 import me.torciv.loltracker.trackers.TabTracker;
@@ -31,9 +32,15 @@ public class Main {
 
     public static ArrayList<Champ> enemyTeam = new ArrayList<>();
 
-    //Cosmic Insight 8347
-    public static void main(String[] args) {
+    @Getter
+    private static Main instance;
 
+    public Main() {
+        instance = this;
+    }
+
+    //Cosmic Insight 8347
+    public static void main(String [] args) {
         Orianna.setRiotAPIKey(APIKEY);
         Orianna.setDefaultRegion(Region.EUROPE_WEST);
 
@@ -53,6 +60,8 @@ public class Main {
             }
             SumRegionHandler rh = (mySide == Side.BLUE) ? SumRegionHandler.RED : SumRegionHandler.BLUE;
 
+            System.out.println(rh.name());
+
 
             for (Player p : currentGame.getParticipants()) {
                 if (p.getTeam().getSide() != mySide) {
@@ -67,11 +76,6 @@ public class Main {
             System.out.println(currentGame.getCreationTime().toLocalTime());
             System.out.println(currentGame.getCreationTime().getMillis());
             System.out.println(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - currentGame.getCreationTime().getMillis()));
-
-            ViewMain viewMain = new ViewMain();
-            viewMain.initFrame();
-
-            //viewMain.es(enemyTeam.get(0).getChampion().getImage().get());
 
 
             try {
@@ -92,6 +96,8 @@ public class Main {
             TabTracker tt = new TabTracker();
             GlobalScreen.addNativeKeyListener(tt);
             GlobalScreen.addNativeMouseListener(new MouseTracker(tt, rh));
+
+            ViewMain.initFrame();
 
 
 

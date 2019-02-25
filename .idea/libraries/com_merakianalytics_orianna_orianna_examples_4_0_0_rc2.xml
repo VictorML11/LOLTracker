@@ -1,0 +1,27 @@
+<component name="libraryTable">
+  <library name="com.merakianalytics.orianna:orianna-examples:4.0.0-rc2" type="repository">
+    <properties maven-id="com.merakianalytics.orianna:orianna-examples:4.0.0-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/merakianalytics/orianna/orianna-examples/4.0.0-SNAPSHOT/orianna-examples-4.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/merakianalytics/orianna/orianna/4.0.0-SNAPSHOT/orianna-4.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/merakianalytics/datapipelines/datapipelines/1.0.4/datapipelines-1.0.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/es/usc/citius/hipster/hipster-core/1.0.1/hipster-core-1.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.13.1/okhttp-3.13.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio/1.17.2/okio-1.17.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.9.8/jackson-annotations-2.9.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/msgpack/jackson-dataformat-msgpack/0.8.16/jackson-dataformat-msgpack-0.8.16.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/msgpack/msgpack-core/0.8.16/msgpack-core-0.8.16.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/joda-time/joda-time/2.10.1/joda-time-2.10.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.9.8/jackson-datatype-joda-2.9.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/cache2k/cache2k-core/1.2.0.Final/cache2k-core-1.2.0.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/cache2k/cache2k-api/1.2.0.Final/cache2k-api-1.2.0.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/20.0/guava-20.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
